@@ -1,0 +1,3 @@
+Django==5.x
+gunicorn==21.x
+whitenoise==6.x
