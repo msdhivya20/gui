@@ -1,0 +1,161 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dashboard{% endblock %}</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'basics/bootstrap/css/bootstrap.min.css' %}">
+
+    <!-- Animate CSS -->
+    <style>
+        body {
+            background-color: #f4f6f9;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+        .navbar-custom {
+            background: linear-gradient(to right, #4e54c8, #8f94fb);
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            min-height: 100vh;
+            background: #111827;
+            animation: slideInLeft 1s ease;
+        }
+
+        .sidebar .nav-link {
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            transition: 0.4s;
+            font-weight: 500;
+        }
+
+        .sidebar .nav-link:hover {
+            background-color: #374151;
+            transform: translateX(8px);
+        }
+
+        /* DROPDOWN BUTTON */
+        .project-btn {
+            width: 100%;
+            text-align: left;
+            background-color: #1f2937;
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 10px;
+            transition: 0.4s;
+        }
+
+        .project-btn:hover {
+            background-color: #374151;
+            transform: scale(1.03);
+        }
+
+        /* MAIN CARD */
+        .main-card {
+            border-radius: 20px;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        /* HEADINGS */
+        h1,
+        h3,
+        h4 {
+            animation: fadeIn 1.5s ease;
+        }
+
+        /* LIST ITEMS */
+        .list-group-item {
+            transition: 0.3s;
+        }
+
+        .list-group-item:hover {
+            background-color: #eef2ff;
+            transform: translateX(5px);
+        }
+
+        /* CUSTOM ANIMATIONS */
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- TOP NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom shadow-sm">
+
+        <div class="container-fluid">
+
+            <a class="navbar-brand fw-bold" href="{% url 'dashboard' %}">
+                🚀 Dashboard
+            </a>
+
+            <!-- ACCOUNT -->
+            <div class="dropdown ms-auto">
+                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+
+                    Account
+
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-end shadow">
+
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            👤 Profile
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item text-danger" href="{% url 'logout' %}">
+                            🚪 Logout
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Bootstrap JS -->
+    <script src="{% static 'basics/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>

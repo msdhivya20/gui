@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My App{% endblock %}</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'basics/bootstrap/css/bootstrap.min.css' %}">
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+
+        .navbar-custom {
+            background: linear-gradient(to right, #4e54c8, #8f94fb);
+        }
+
+        .navbar-brand {
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .hero-section {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .btn-custom {
+            background-color: white;
+            color: #4e54c8;
+            font-weight: 600;
+            border: none;
+        }
+
+        .btn-custom:hover {
+            background-color: #e5e7eb;
+        }
+
+        .dropdown-menu {
+            border-radius: 12px;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom shadow-sm">
+
+        <div class="container">
+
+            <!-- LOGO -->
+            <a class="navbar-brand" href="{% url 'ktpl' %}">
+                KTPL
+            </a>
+
+            <!-- RIGHT SIDE -->
+            <div class="dropdown ms-auto">
+
+                <button class="btn btn-custom dropdown-toggle"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+
+                    Account
+
+                </button>
+
+                <!-- DROPDOWN -->
+                <ul class="dropdown-menu dropdown-menu-end">
+
+                    <li>
+                        <a class="dropdown-item" href="{% url 'login' %}">
+                            🔐 Login
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item" href="{% url 'signup' %}">
+                            📝 Signup
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- CONTENT -->
+    <div class="container mt-5">
+
+        <div class="hero-section">
+
+            {% block content %}
+            {% endblock %}
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="{% static 'basics/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>

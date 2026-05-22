@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<div class="text-center">
+    
+    <h1 class="display-4">Welcome to MyApp</h1>
+
+    <p class="lead mt-3">
+        This is a simple web application built using Django and Bootstrap.
+    </p>
+
+    <p>
+        You can create an account, login, and explore the features of the application.
+    </p>
+
+    <a href="{% url 'signup' %}" class="btn btn-primary mt-3">
+        Get Started
+    </a>
+
+</div>
+
+{% endblock %}

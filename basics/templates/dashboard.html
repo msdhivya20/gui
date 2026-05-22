@@ -1,0 +1,536 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dashboard{% endblock %}</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'basics/bootstrap/css/bootstrap.min.css' %}">
+
+    <!-- Animate CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+        .navbar-custom {
+            background: linear-gradient(to right, #4e54c8, #8f94fb);
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            min-height: 100vh;
+            background: #111827;
+            animation: slideInLeft 1s ease;
+        }
+
+        .sidebar .nav-link {
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            transition: 0.4s;
+            font-weight: 500;
+        }
+
+        .sidebar .nav-link:hover {
+            background-color: #374151;
+            transform: translateX(8px);
+        }
+
+        /* DROPDOWN BUTTON */
+        .project-btn {
+            width: 100%;
+            text-align: left;
+            background-color: #1f2937;
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 10px;
+            transition: 0.4s;
+        }
+
+        .project-btn:hover {
+            background-color: #374151;
+            transform: scale(1.03);
+        }
+
+        /* MAIN CARD */
+        .main-card {
+            border-radius: 20px;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        /* HEADINGS */
+        h1,
+        h3,
+        h4 {
+            animation: fadeIn 1.5s ease;
+        }
+
+        /* LIST ITEMS */
+        .list-group-item {
+            transition: 0.3s;
+        }
+
+        .list-group-item:hover {
+            background-color: #eef2ff;
+            transform: translateX(5px);
+        }
+
+        /* CUSTOM ANIMATIONS */
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- TOP NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom shadow-sm">
+
+        <div class="container-fluid">
+
+            <a class="navbar-brand fw-bold animate__animated animate__fadeInDown" href="#">
+                🚀 Dashboard
+            </a>
+
+            <!-- ACCOUNT -->
+            <div class="dropdown ms-auto animate__animated animate__fadeInRight">
+
+                <button class="btn btn-light dropdown-toggle"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+
+                    Account
+
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-end shadow">
+
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            👤 Profile
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item text-danger"
+                           href="{% url 'logout' %}">
+                            🚪 Logout
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- MAIN SECTION -->
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- SIDEBAR -->
+            <div class="col-md-3 col-lg-2 p-0">
+
+                <div class="sidebar text-white shadow-lg">
+
+                    <div class="p-4">
+
+                        <h3 class="text-center mb-4 animate__animated animate__fadeIn">
+                            Menu
+                        </h3>
+
+                        <ul class="nav flex-column">
+
+                            <!-- HOME -->
+                            <li class="nav-item mb-2">
+                                <a href="#" class="nav-link">
+                                    🏠 Home
+                                </a>
+                            </li>
+
+                            <!-- DJANGO -->
+                            <li class="nav-item mb-3 dropdown">
+
+                                <button class="project-btn dropdown-toggle"
+                                        type="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+
+                                    🚀 Django
+
+                                </button>
+
+                                <ul class="dropdown-menu shadow">
+
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            🔐 Authentication
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            🌐 Templates
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            🗄 Database
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+
+                            <!-- ML -->
+                            <li class="nav-item mb-3 dropdown">
+
+                                <button class="project-btn dropdown-toggle"
+                                        type="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+
+                                    🤖 ML Predictions
+
+                                </button>
+
+                                <ul class="dropdown-menu shadow">
+
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            🌦 Weather Prediction
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            👁 Eye Blink Detection
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            📈 Data Analysis
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+
+                            <!-- IOT -->
+                            <li class="nav-item mb-3 dropdown">
+
+                                <button class="project-btn dropdown-toggle"
+                                        type="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+
+                                    🌐 IoT Projects
+
+                                </button>
+
+                                <ul class="dropdown-menu shadow">
+
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'led' %}">
+                                            💡 LED
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            🌡 Sensor Monitoring
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            🚪 Smart Door
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+
+                            <!-- PROFILE -->
+                            <li class="nav-item mb-2">
+                                <a href="#" class="nav-link">
+                                    👤 Profile
+                                </a>
+                            </li>
+
+                            <!-- SETTINGS -->
+                            <li class="nav-item mb-2">
+                                <a href="#" class="nav-link">
+                                    ⚙ Settings
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+           <!-- MAIN CONTENT -->
+<div class="col-md-9 col-lg-10 p-5">
+
+    <div class="bg-white shadow-lg p-5 main-card">
+
+        <h1 class="mb-4 text-primary">
+            Welcome, {{ request.user.username }} 👋
+        </h1>
+
+        <h3 class="mb-3">
+            Django, IoT & Machine Learning Integration
+        </h3>
+
+        <p class="lead text-secondary">
+            This platform is developed using Django Framework with integration of
+            IoT devices and Machine Learning technologies. The main purpose of
+            this project is to create smart web applications that can interact
+            with hardware devices, collect real-time data, and perform intelligent
+            predictions using Machine Learning models.
+        </p>
+
+        <hr>
+
+        <!-- DJANGO -->
+        <h4 class="mt-4 text-dark">
+            🚀 About Django
+        </h4>
+
+        <p>
+            Django is a high-level Python web framework used for developing
+            powerful and secure web applications quickly. It follows the
+            Model-View-Template (MVT) architecture and provides built-in
+            features such as user authentication, database connectivity,
+            admin panel, session handling, form validation, and security.
+        </p>
+
+        <p>
+            In this project, Django is used as the backend framework to manage:
+        </p>
+
+        <ul class="list-group mb-4 shadow-sm">
+
+            <li class="list-group-item">
+                ✅ User Login and Signup Authentication
+            </li>
+
+            <li class="list-group-item">
+                ✅ Dashboard Management
+            </li>
+
+            <li class="list-group-item">
+                ✅ Database Storage and Retrieval
+            </li>
+
+            <li class="list-group-item">
+                ✅ API Integration with IoT Devices
+            </li>
+
+            <li class="list-group-item">
+                ✅ Machine Learning Model Integration
+            </li>
+
+        </ul>
+
+        <!-- IOT -->
+        <h4 class="mt-4 text-dark">
+            🌐 IoT Integration
+        </h4>
+
+        <p>
+            Internet of Things (IoT) refers to connecting physical devices
+            such as sensors, microcontrollers, and smart systems to the internet.
+            These devices can collect data and communicate with web applications
+            in real time.
+        </p>
+
+        <p>
+            This project integrates IoT devices like:
+        </p>
+
+        <ul class="list-group mb-4 shadow-sm">
+
+            <li class="list-group-item">
+                🔹 Arduino
+            </li>
+
+            <li class="list-group-item">
+                🔹 NodeMCU ESP8266
+            </li>
+
+            <li class="list-group-item">
+                🔹 Raspberry Pi
+            </li>
+
+            <li class="list-group-item">
+                🔹 IR Sensors and Temperature Sensors
+            </li>
+
+            <li class="list-group-item">
+                🔹 Smart Automation Devices
+            </li>
+
+        </ul>
+
+        <p>
+            Using Django and IoT together helps in building smart applications
+            such as home automation systems, smart attendance systems,
+            sensor monitoring dashboards, smart agriculture systems,
+            and real-time alert systems.
+        </p>
+
+        <!-- ML -->
+        <h4 class="mt-4 text-dark">
+            🤖 Machine Learning Integration
+        </h4>
+
+        <p>
+            Machine Learning (ML) is a branch of Artificial Intelligence
+            that enables systems to learn from data and make predictions
+            automatically without being explicitly programmed every time.
+        </p>
+
+        <p>
+            In this platform, Machine Learning models can be integrated
+            with Django applications to perform intelligent operations such as:
+        </p>
+
+        <ul class="list-group mb-4 shadow-sm">
+
+            <li class="list-group-item">
+                📊 Weather Prediction
+            </li>
+
+            <li class="list-group-item">
+                👁 Eye Blink Detection
+            </li>
+
+            <li class="list-group-item">
+                😊 Face Recognition
+            </li>
+
+            <li class="list-group-item">
+                🌡 Sensor Data Prediction
+            </li>
+
+            <li class="list-group-item">
+                🤖 Smart Automation Systems
+            </li>
+
+        </ul>
+
+        <p>
+            Machine Learning models are trained using datasets and then
+            integrated into Django using Python libraries such as:
+        </p>
+
+        <ul class="list-group mb-4 shadow-sm">
+
+            <li class="list-group-item">
+                🔹 Scikit-Learn
+            </li>
+
+            <li class="list-group-item">
+                🔹 TensorFlow
+            </li>
+
+            <li class="list-group-item">
+                🔹 OpenCV
+            </li>
+
+            <li class="list-group-item">
+                🔹 Pandas and NumPy
+            </li>
+
+        </ul>
+
+        <!-- FEATURES -->
+        <h4 class="mt-4 text-dark">
+            🔥 Project Features
+        </h4>
+
+        <ul class="list-group mt-3 shadow-sm">
+
+            <li class="list-group-item">
+                ✅ Responsive Bootstrap Dashboard
+            </li>
+
+            <li class="list-group-item">
+                ✅ User Authentication System
+            </li>
+
+            <li class="list-group-item">
+                ✅ IoT Device Monitoring Dashboard
+            </li>
+
+            <li class="list-group-item">
+                ✅ Real-time Sensor Data Display
+            </li>
+
+            <li class="list-group-item">
+                ✅ Machine Learning Prediction Models
+            </li>
+
+            <li class="list-group-item">
+                ✅ Smart Automation Integration
+            </li>
+
+            <li class="list-group-item">
+                ✅ Interactive User Interface
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+    <!-- Bootstrap JS -->
+    <script src="{% static 'basics/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>

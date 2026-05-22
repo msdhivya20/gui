@@ -1,0 +1,108 @@
+{% extends 'home.html' %}
+
+{% load static %}
+
+{% block title %}
+LED Control
+{% endblock %}
+
+{% block content %}
+
+<style>
+
+    body {
+        background-color: #f4f6f9;
+    }
+
+    .card-box {
+        max-width: 500px;
+        margin: 80px auto;
+        border-radius: 20px;
+    }
+
+    .led-circle {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        margin: 25px auto;
+        transition: 0.5s;
+    }
+
+</style>
+
+<div class="container">
+
+    <div class="card shadow-lg p-5 text-center card-box">
+
+        <h2 class="mb-4 text-primary">
+            💡 LED Control System
+        </h2>
+
+        <!-- BUTTONS -->
+
+        <div class="d-flex justify-content-center gap-3">
+
+            <!-- ON BUTTON -->
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <button type="submit"
+                        name="led"
+                        value="on"
+                        class="btn btn-success btn-lg">
+
+                    LED ON
+
+                </button>
+
+            </form>
+
+            <!-- OFF BUTTON -->
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <button type="submit"
+                        name="led"
+                        value="off"
+                        class="btn btn-danger btn-lg">
+
+                    LED OFF
+
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- LED LIGHT -->
+
+        <div class="led-circle mb-4"
+            style="
+            background-color:{% if status == 'ON' %}lime{% else %}red{% endif %};
+            box-shadow:0 0 30px {% if status == 'ON' %}lime{% else %}red{% endif %};
+            ">
+        </div>
+
+        <!-- STATUS -->
+
+        <h4 class="mb-4">
+
+            LED Status :
+
+            <span class="{% if status == 'ON' %}text-success{% else %}text-danger{% endif %}">
+
+                {{ status }}
+
+            </span>
+
+        </h4>
+
+    </div>
+
+</div>
+
+{% endblock %}
